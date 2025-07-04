@@ -2,11 +2,11 @@ using UnityEngine;
 
 public class Arma : MonoBehaviour
 {
-    
+    private SpriteRenderer spr;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+        spr = GetComponent<SpriteRenderer>();
     }
 
     // Update is called once per frame
@@ -20,14 +20,14 @@ public class Arma : MonoBehaviour
             Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             transform.right = mousePos - new Vector2(transform.position.x, transform.position.y);
             
-            // if (mousePos.x < 0)
-            // {
-            //     transform.eulerAngles = mousePos - new Vector2(0, 180);
-            // }
-            // else
-            // {
-            //     transform.eulerAngles = mousePos - new Vector2(0, 0);
-            // }
+            if (mousePos.x < 0)
+            {
+                spr.flipY = true;
+            }
+            else if (mousePos.x > 0)
+            {
+                spr.flipY = false;
+            }
             
         }
 }
